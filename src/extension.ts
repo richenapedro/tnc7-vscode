@@ -384,10 +384,17 @@ const ALL_M_DOC: Record<number, MDoc> = { ...MANUAL_M_DOC, ...M_DOC };
 
 function renumberText(fullText: string): string {
   const lines = fullText.split(/\r?\n/);
+
   const out = lines.map((line, idx) => {
+    // remove numbering antigo (ex: "123 ...")
     const stripped = line.replace(/^\s*\d+\s+/, "");
-    return `${idx} ${stripped}`;
+
+    // se ficou vazio (ou só espaços), vira comentário ";"
+    const content = stripped.trim().length === 0 ? ";" : stripped;
+
+    return `${idx} ${content}`;
   });
+
   return out.join("\n");
 }
 
