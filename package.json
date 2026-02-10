@@ -1,0 +1,58 @@
+{
+  "name": "tnc7-heidenhain-h",
+  "displayName": "TNC7 Heidenhain (.H)",
+  "description": "Syntax highlight + renumber/formatter for Heidenhain TNC7 .H files.",
+  "version": "0.0.1",
+  "publisher": "local",
+  "engines": { "vscode": "^1.85.0" },
+  "categories": ["Programming Languages", "Formatters"],
+  "activationEvents": ["onLanguage:tnc7h", "onCommand:tnc7.renumber"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "tnc7h",
+        "aliases": ["Heidenhain TNC7 (.H)"],
+        "extensions": [".H"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "tnc7h",
+        "scopeName": "source.tnc7h",
+        "path": "./syntaxes/tnc7h.tmLanguage.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "tnc7.renumber",
+        "title": "TNC7: Renumber (0..)"
+      }
+    ],
+    "configurationDefaults": {
+      "[tnc7h]": {
+        "editor.defaultFormatter": "local.tnc7-heidenhain-h"
+      }
+    },
+    "configuration": {
+      "title": "TNC7 Heidenhain (.H)",
+      "properties": {
+        "tnc7.renumber.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable automatic renumbering when formatting .H files."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p .",
+    "watch": "tsc -watch -p ."
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.4.0",
+    "@vscode/vsce": "^2.26.0"
+  }
+}

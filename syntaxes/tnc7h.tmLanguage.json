@@ -1,0 +1,112 @@
+{
+  "name": "TNC7H",
+  "scopeName": "source.tnc7h",
+  "patterns": [
+    { "include": "#lineNumber" },
+    { "include": "#strings" },
+    { "include": "#commentLine" },
+
+    { "include": "#cycles" },
+    { "include": "#plcOps" },
+    { "include": "#mCodes" },
+    { "include": "#qVars" },
+    { "include": "#controlFlow" },
+
+    { "include": "#numbers" }
+  ],
+  "repository": {
+    "lineNumber": {
+      "patterns": [
+        {
+          "name": "comment.line.number.tnc7h",
+          "match": "^\\s*(\\d+)(?=\\s)"
+        }
+      ]
+    },
+
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.tnc7h",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            { "name": "constant.character.escape.tnc7h", "match": "\\\\." }
+          ]
+        }
+      ]
+    },
+
+    "commentLine": {
+      "patterns": [
+        {
+          "name": "comment.line.semicolon.tnc7h",
+          "begin": ";",
+          "end": "$"
+        }
+      ]
+    },
+
+    "cycles": {
+      "patterns": [
+        {
+          "name": "support.class.cycle.tnc7h",
+          "match": "\\b(CYCL\\s+DEF|CYC\\s+CALL)\\b"
+        }
+      ]
+    },
+
+    "plcOps": {
+      "patterns": [
+        {
+          "name": "entity.name.function.plc.tnc7h",
+          "match": "\\b(FN)\\b"
+        },
+        {
+          "name": "entity.name.function.plc.tnc7h",
+          "match": "\\b(READ\\s+FROM\\s+PLC\\s+KEY|WRITE\\s+TO\\s+PLC\\s+KEY)\\b"
+        },
+        {
+          "name": "entity.name.function.plc.tnc7h",
+          "match": "\\b(SYSREAD|SYSWRITE|WAIT\\s+FOR\\s+SYNC)\\b"
+        }
+      ]
+    },
+
+    "mCodes": {
+      "patterns": [
+        {
+          "name": "entity.name.tag.mcode.tnc7h",
+          "match": "\\bM\\d+\\b"
+        }
+      ]
+    },
+
+    "qVars": {
+      "patterns": [
+        {
+          "name": "variable.parameter.qvar.tnc7h",
+          "match": "\\bQ(L\\d+|\\d+)\\b"
+        }
+      ]
+    },
+
+    "controlFlow": {
+      "patterns": [
+        {
+          "name": "keyword.control.tnc7h",
+          "match": "\\b(BEGIN\\s+PGM|END\\s+PGM|LBL|IF|EQU|LT|GT|GOTO|TO|DECLARE|SQL)\\b"
+        }
+      ]
+    },
+
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.tnc7h",
+          "match": "(?<!\\w)[+-]?\\d+(?:\\.\\d+)?(?!\\w)"
+        }
+      ]
+    }
+  }
+}
