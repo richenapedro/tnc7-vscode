@@ -4,6 +4,11 @@
   "description": "Syntax highlight + renumber/formatter for Heidenhain TNC7 .H files.",
   "version": "0.0.1",
   "publisher": "local",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/richenapedro/tnc7-vscode.git"
+  },
   "engines": { "vscode": "^1.85.0" },
   "categories": ["Programming Languages", "Formatters"],
   "activationEvents": ["onLanguage:tnc7h", "onCommand:tnc7.renumber"],
