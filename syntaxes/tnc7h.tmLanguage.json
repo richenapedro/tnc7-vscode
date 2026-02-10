@@ -3,8 +3,12 @@
   "scopeName": "source.tnc7h",
   "patterns": [
     { "include": "#lineNumber" },
-    { "include": "#strings" },
+
     { "include": "#commentLine" },
+    { "include": "#strings" },
+
+    { "include": "#numbersDotted" },
+    { "include": "#identsDotted" },
 
     { "include": "#cycles" },
     { "include": "#plcOps" },
@@ -43,6 +47,24 @@
           "name": "comment.line.semicolon.tnc7h",
           "begin": ";",
           "end": "$"
+        }
+      ]
+    },
+
+    "numbersDotted": {
+      "patterns": [
+        {
+          "name": "constant.numeric.tnc7h",
+          "match": "\\b\\d+(?:\\.\\d+)+\\b"
+        }
+      ]
+    },
+
+    "identsDotted": {
+      "patterns": [
+        {
+          "name": "variable.other.tnc7h",
+          "match": "\\b[A-Z_][A-Z0-9_]*(?:\\.[A-Z0-9_]+)+\\b"
         }
       ]
     },
